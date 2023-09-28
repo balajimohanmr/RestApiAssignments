@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "6f73ed41-7a19-4793-8a7e-a6d62226c3d9",
+		"name": "ServiceNow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26039423",
+		"_collection_link": "https://cloudy-trinity-725539.postman.co/workspace/Postman-September~360ed4e7-0629-4c59-934c-241768e19ef4/collection/26039423-6f73ed41-7a19-4793-8a7e-a6d62226c3d9?action=share&source=collection_link&creator=26039423"
+	},
+	"item": [
+		{
+			"name": "Retrieve",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev149758.service-now.com/api/now/table/incident?sysparm_limit=1",
+					"protocol": "https",
+					"host": [
+						"dev149758",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateOrder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.json().result.short_description).to.include(\"Hello postman\");\r",
+							"});\r",
+							"\r",
+							"pm.globals.set(\"SysId\", pm.response.json().result.sys_id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"short_description\":\"Hello postman\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev149758.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev149758",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modifysystemid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.result.short_description).contains(\"jesus\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"short_description\":\"Thank you jesus\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev149758.service-now.com/api/now/table/incident/:sysid",
+					"protocol": "https",
+					"host": [
+						"dev149758",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						":sysid"
+					],
+					"variable": [
+						{
+							"key": "sysid",
+							"value": "{{SysId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleterecord",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dev149758.service-now.com/api/now/table/incident/:sysid",
+					"protocol": "https",
+					"host": [
+						"dev149758",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						":sysid"
+					],
+					"variable": [
+						{
+							"key": "sysid",
+							"value": "{{SysId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "jq//ooBCE26L",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

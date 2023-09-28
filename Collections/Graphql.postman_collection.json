@@ -1,0 +1,19 @@
+{
+	"info": {
+		"_postman_id": "de76b4aa-53ed-4e98-90ae-64a7f3b7e2a8",
+		"name": "Graphql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26039423",
+		"_collection_link": "https://cloudy-trinity-725539.postman.co/workspace/Postman-September~360ed4e7-0629-4c59-934c-241768e19ef4/collection/26039423-de76b4aa-53ed-4e98-90ae-64a7f3b7e2a8?action=share&source=collection_link&creator=26039423"
+	},
+	"item": [
+		{
+			"name": "Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
